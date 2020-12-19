@@ -33,7 +33,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/create-pic'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({

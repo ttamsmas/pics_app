@@ -82,7 +82,7 @@ class CreatePic extends Component {
               <br />
               <Form.File id="fileUpload" placeholder="upload pic" />
             </Form.Group>
-            <Button variant="link">Link</Button>
+            <Button variant="dark">Dark</Button>
           </form>
         </div>
       )

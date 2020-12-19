@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
+
 import { v4 as uuid } from 'uuid'
 
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
@@ -31,6 +32,7 @@ class App extends Component {
     }
   }
 
+  // updates user name to show Authenticated Route
   directLogIn = event => {
     event.preventDefault()
     signIn({ email: 'w@w.com', password: '66666' })
