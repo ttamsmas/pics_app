@@ -37,12 +37,6 @@ class App extends Component {
       .then(res => this.setUser(res.data.user))
   }
 
-  //   this.state = {
-  //     email: '',
-  //     password: ''
-  //   }
-  // }
-
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
@@ -89,7 +83,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/create-pic' render={() => (
+          <AuthenticatedRoute user={user} path='/' render={() => (
             <CreatePic msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/delete-pic' render={() => (
