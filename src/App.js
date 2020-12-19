@@ -5,10 +5,22 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
+
+// Authentication Components
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+
+// Pic Resource Components
+import UpdatePic from './components/UpdatePic/UpdatePic'
+import DeletePic from './components/DeletePic/DeletePic'
+import ShowPic from './components/ShowPic/ShowPic'
+import IndexPic from './components/IndexPic/IndexPic'
+import CreatePic from './components/CreatePic/CreatePic'
+
+// Import API Auth for directLogIn
+import { signIn } from './api/auth'
 
 class App extends Component {
   constructor () {
@@ -18,6 +30,18 @@ class App extends Component {
       msgAlerts: []
     }
   }
+
+  directLogIn = event => {
+    event.preventDefault()
+    signIn({ email: 'w@w.com', password: '66666' })
+      .then(res => this.setUser(res.data.user))
+  }
+
+  //   this.state = {
+  //     email: '',
+  //     password: ''
+  //   }
+  // }
 
   setUser = user => this.setState({ user })
 
@@ -65,6 +89,22 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/create-pic' render={() => (
+            <CreatePic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/delete-pic' render={() => (
+            <DeletePic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/update-pic' render={() => (
+            <UpdatePic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/index-pic' render={() => (
+            <IndexPic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/show-pic' render={() => (
+            <ShowPic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <button onClick={this.directLogIn}>Quick Login</button>
         </main>
       </Fragment>
     )
