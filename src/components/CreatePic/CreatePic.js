@@ -13,11 +13,9 @@ class CreatePic extends Component {
     super(props)
 
     this.state = {
-      pic: {
-        caption: '',
-        tag: '',
-        imgLink: ''
-      }
+      caption: '',
+      tag: '',
+      imgLink: ''
     }
   }
 

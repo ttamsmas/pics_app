@@ -94,7 +94,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/update-pic' render={() => (
             <UpdatePic msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/index-pic' render={() => (
+          <AuthenticatedRoute user={user} path='/pics' render={() => (
             <IndexPic msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/show-pic' render={() => (
