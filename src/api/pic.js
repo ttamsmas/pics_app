@@ -31,3 +31,13 @@ export const showPic = (user, picId) => {
     }
   })
 }
+
+export const picDelete = (user, picId) => {
+  return axios({
+    method: 'DELETE',
+    url: apiUrl + '/pics/' + picId + '/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
