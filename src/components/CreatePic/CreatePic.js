@@ -14,7 +14,7 @@ class CreatePic extends Component {
 
     this.state = {
       pic: {
-        name: '',
+        caption: '',
         tag: '',
         imgLink: ''
       }
@@ -30,9 +30,9 @@ class CreatePic extends Component {
         const updatedField = {
           [event.target.name]: event.target.value
         }
-        const updatedData = Object.assign({}, prevState.chat, updatedField)
+        const updatedData = Object.assign({}, prevState.pic, updatedField)
 
-        return { chat: updatedData }
+        return { pic: updatedData }
       })
     }
 
@@ -41,8 +41,8 @@ class CreatePic extends Component {
       const { msgAlert, user } = this.props
       createPic(this.state.pic, user)
         // Next make form clear on submit
-        .then(() => this.setState({ chat: {
-          text: '' } }))
+        .then(() => this.setState({ pic: {
+          caption: '', tag: '', imgLink: '' } }))
 
         .then(() => msgAlert({
           heading: 'Sent!',
@@ -51,7 +51,7 @@ class CreatePic extends Component {
         }))
 
         .catch(error => {
-          this.setState({ text: '' })
+          this.setState({ pic: '' })
           msgAlert({
             heading: 'Message failed ' + error.message,
             message: messages.createMessageFailure,
@@ -66,10 +66,10 @@ class CreatePic extends Component {
           <form onSubmit={this.onCreatePic}>
             <Form.Group>
               <Form.Label>Pic Caption</Form.Label>
-              <Form.Control type="text" placeholder="type caption here..." />
+              <Form.Control type="text" placeholder="type caption here..." name='caption' onChange={this.handleInputChange}/>
               <br />
               <Form.Label>Pic Tags</Form.Label>
-              <Form.Control as="select">
+              <Form.Control as="select" name='tag' onChange={this.handleInputChange}>
                 <option>People</option>
                 <option>Pets</option>
                 <option>Nature</option>
@@ -78,11 +78,11 @@ class CreatePic extends Component {
               </Form.Control>
               <br />
               <Form.Label>Pic Link</Form.Label>
-              <Form.Control type="text" placeholder="Link to Pic"/>
+              <Form.Control type="text" placeholder="Link to Pic" name='imgLink' onChange={this.handleInputChange}/>
               <br />
-              <Form.File id="fileUpload" placeholder="upload pic" />
+              <Form.File id="fileUpload" placeholder="upload pic" name='file' onChange={this.handleInputChange}/>
             </Form.Group>
-            <Button variant="dark">Dark</Button>
+            <Button type='submit' variant="dark">Dark</Button>
           </form>
         </div>
       )
