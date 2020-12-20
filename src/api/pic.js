@@ -41,3 +41,14 @@ export const picDelete = (user, picId) => {
     }
   })
 }
+
+export const updatePic = (user, pic, id) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/pics/' + id,
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data: { pic: pic }
+  })
+}

@@ -84,10 +84,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/' render={() => (
+          <AuthenticatedRoute user={user} path='/create-pic' render={() => (
             <CreatePic msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/pics' render={() => (
+          <AuthenticatedRoute user={user} path='/' render={() => (
             <IndexPic msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/pic-update/:picId' render={({ match, history }) => (
