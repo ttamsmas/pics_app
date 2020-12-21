@@ -18,10 +18,9 @@ class Pics extends Component {
       imgLink: ''
     }
   }
+
   componentDidMount () {
     const { user, msgAlert } = this.props
-    console.log(user)
-    console.log(this.props)
     indexPic(user)
       .then(res => {
         this.setState({ pics: res.data.pics })
@@ -51,22 +50,6 @@ class Pics extends Component {
     }
   }
 
-  // something weird is happening where the state is only recording changes to one field, not all three of the update fields. I think it's because we are using pic state and not the specific field
-  // handleInputChange = event => {
-  //   event.persist()
-  //
-  //   this.setState(prevState => {
-  //     const updatedField = {
-  //       [event.target.name]: event.target.value
-  //     }
-  //     console.log(updatedField)
-  //     console.log(prevState)
-  //     const updatedData = Object.assign({}, prevState[event.target.name], updatedField)
-  //     console.log(updatedData)
-  //     return { pic: updatedData }
-  //   })
-  // }
-
   handleInputChange = event => {
     event.persist()
     const updatedField = { [event.target.name]: event.target.value }
@@ -81,13 +64,9 @@ class Pics extends Component {
     const { msgAlert, user } = this.props
     const iD = this.state.picId
     const updates = this.state
-    console.log(user)
-    console.log(this.state)
-    console.log(updates)
     updatePic(user, updates, iD)
       // Next make form clear on submit
       .then(() => this.setState({ showUpdate: false, caption: '', tag: '', imgLink: '' }))
-
       .then(() => msgAlert({
         heading: 'Updating...',
         message: 'Update Complete',
@@ -120,7 +99,6 @@ class Pics extends Component {
           variant: 'success'
         })
       })
-
       .then(props => {
         indexPic(this.props.user)
           .then(res => {
