@@ -1,6 +1,6 @@
 let apiUrl
 const apiUrls = {
-  production: 'https://aqueous-atoll-85096.herokuapp.com',
+  production: 'https://git.heroku.com/pics-api2020.git',
   development: 'http://localhost:8000'
 }
 
