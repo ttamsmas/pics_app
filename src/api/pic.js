@@ -4,7 +4,7 @@ import axios from 'axios'
 export const createPic = (pic, user) => {
   return axios({
     method: 'POST',
-    url: apiUrl + '/pics',
+    url: apiUrl + '/pics/',
     headers: {
       'Authorization': `Token ${user.token}`
     },
