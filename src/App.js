@@ -14,7 +14,6 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
 // Pic Resource Components
-import UpdatePic from './components/UpdatePic/UpdatePic'
 // import ShowPic from './components/ShowPic/ShowPic'
 import IndexPic from './components/IndexPic/IndexPic'
 import CreatePic from './components/CreatePic/CreatePic'
@@ -90,14 +89,6 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/' render={() => (
             <IndexPic msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/pic-update/:picId' render={({ match, history }) => (
-            <UpdatePic
-              match={match}
-              history={history}
-              user={user}
-              msgAlert={this.msgAlert}
-            />
-          )}/>
           <button onClick={this.directLogIn}>Quick Login</button>
         </main>
       </Fragment>
