@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { indexPic, picDelete, updatePic } from '../../api/pic'
 import { Button, Card, Form } from 'react-bootstrap'
 import Like from '../Like/Like'
+import CreatePic from '../CreatePic/CreatePic'
 
 class Pics extends Component {
   constructor (props) {
@@ -118,6 +119,7 @@ class Pics extends Component {
   }
 
   render () {
+    const user = this.props.user
     const pics = this.state.pics.map(pic => (
       <div key={pic.id}>
         <Card style={{ width: '18rem' }}>
@@ -127,7 +129,7 @@ class Pics extends Component {
             <Card.Text>{pic.tag}</Card.Text>
             <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete}>Delete</Button>
             <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields}>Update</Button>
-            <Like props={this.props.user.token}/>
+            <Like props={user} name={pic.id}/>
           </Card.Body>
         </Card>
       </div>
@@ -166,6 +168,7 @@ class Pics extends Component {
 
     return (
       <div>
+        <CreatePic/>
         {update()}
         {pics}
       </div>

@@ -14,9 +14,7 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
 // Pic Resource Components
-// import ShowPic from './components/ShowPic/ShowPic'
 import IndexPic from './components/IndexPic/IndexPic'
-import CreatePic from './components/CreatePic/CreatePic'
 
 // Import API Auth for directLogIn
 import { signIn } from './api/auth'
@@ -82,9 +80,6 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/create-pic' render={() => (
-            <CreatePic msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/' render={() => (
             <IndexPic msgAlert={this.msgAlert} user={user} />
