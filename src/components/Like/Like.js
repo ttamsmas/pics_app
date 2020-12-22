@@ -23,13 +23,14 @@ class Likes extends Component {
   }
 
   handleToggle = event => {
+    const token = this.props
     event.preventDefault()
-    if (this.state.liked === false) {
-      this.setState({ liked: true })
-      createLike(event.target.name)
-    } else {
+    if (this.state.liked === true) {
       this.setState({ liked: false })
-      likeDelete(event.target.name)
+      likeDelete(event.target.name, token.props)
+    } else {
+      this.setState({ liked: true })
+      createLike(event.target.name, token.props)
     }
   }
 

@@ -1,12 +1,12 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createLike = (like, user) => {
+export const createLike = (like, token) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/likes/',
     headers: {
-      'Authorization': `Token ${user.token}`
+      'Authorization': `Token ${token}`
     },
     data: { like }
   })
@@ -22,12 +22,12 @@ export const indexLike = token => {
   })
 }
 
-export const likeDelete = (user, likeId) => {
+export const likeDelete = (token, likeId) => {
   return axios({
     method: 'DELETE',
     url: apiUrl + '/likes/' + likeId + '/',
     headers: {
-      'Authorization': `Token ${user.token}`
+      'Authorization': `Token ${token}`
     }
   })
 }
