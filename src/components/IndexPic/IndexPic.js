@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { indexPic, picDelete, updatePic } from '../../api/pic'
 import { Button, Card, Form } from 'react-bootstrap'
+import Like from '../Like/Like'
 
 class Pics extends Component {
   constructor (props) {
@@ -21,6 +22,7 @@ class Pics extends Component {
 
   componentDidMount () {
     const { user, msgAlert } = this.props
+    console.log(user)
     indexPic(user)
       .then(res => {
         this.setState({ pics: res.data.pics })
@@ -125,6 +127,7 @@ class Pics extends Component {
             <Card.Text>{pic.tag}</Card.Text>
             <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete}>Delete</Button>
             <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields}>Update</Button>
+            <Like props={this.props.user.token}/>
           </Card.Body>
         </Card>
       </div>
