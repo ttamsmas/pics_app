@@ -65,7 +65,7 @@ class Pics extends Component {
       })
   }
 
-  showUpdateFields = event => {
+  showUpdateFields = (event) => {
     if (this.state.showUpdate === false) {
       this.setState({ showUpdate: true, picId: event.target.name })
     } else {
@@ -183,7 +183,7 @@ class Pics extends Component {
     return (
       <div>
         <CreatePic user={this.props.user} pics={this.state.pics} msgAlert={this.props.msgAlert}/>
-        {update}
+        {update()}
         {pics}
       </div>
     )
