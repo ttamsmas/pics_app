@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 
 import { indexPic, picDelete, updatePic } from '../../api/pic'
 import { Button, Card, Form } from 'react-bootstrap'
-import Like from '../Like/Like'
+// import Like from '../Like/Like'
 import CreatePic from '../CreatePic/CreatePic'
 
 class Pics extends Component {
   constructor (props) {
     super(props)
-    this.showUpdateFields = this.showUpdateFields.bind(this)
-    this.onUpdatePic = this.onUpdatePic.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
     this.state = {
       pics: [],
       showUpdate: false,
@@ -23,7 +20,31 @@ class Pics extends Component {
 
   componentDidMount () {
     const { user, msgAlert } = this.props
-    console.log(user)
+    const runIndex = user => {
+      indexPic(user)
+        .then(res => {
+          this.setState({ pics: res.data.pics })
+        })
+        .then(() => {
+          msgAlert({
+            heading: 'Images Have Finished Loading',
+            variant: 'success',
+            message: 'enjoy!'
+          })
+        })
+        .catch(err => {
+          msgAlert({
+            heading: 'Pics Failed to Load',
+            variant: 'danger',
+            message: 'Pic Error Message: ' + err.message
+          })
+        })
+    }
+    runIndex(user)
+  }
+
+  runIndex = () => {
+    const { user, msgAlert } = this.props
     indexPic(user)
       .then(res => {
         this.setState({ pics: res.data.pics })
@@ -44,9 +65,8 @@ class Pics extends Component {
       })
   }
 
-  showUpdateFields = (event) => {
+  showUpdateFields = event => {
     if (this.state.showUpdate === false) {
-      console.log(event.target.name)
       this.setState({ showUpdate: true, picId: event.target.name })
     } else {
       this.setState({ showUpdate: false, picId: '' })
@@ -64,26 +84,20 @@ class Pics extends Component {
 
   onUpdatePic = event => {
     event.preventDefault()
-    const { msgAlert, user } = this.props
+    const { user } = this.props
     const iD = this.state.picId
     const updates = this.state
     updatePic(user, updates, iD)
       // Next make form clear on submit
       .then(() => this.setState({ showUpdate: false, caption: '', tag: '', imgLink: '' }))
-      .then(() => msgAlert({
+      .then(() => this.props.msgAlert({
         heading: 'Updating...',
         message: 'Update Complete',
         variant: 'success'
       }))
-      .then(props => {
-        indexPic(this.props.user)
-          .then(res => {
-            this.setState({ pics: res.data.pics })
-          })
-      })
+      .then(() => this.runIndex(user))
       .catch(error => {
-        this.setState({ pic: '' })
-        msgAlert({
+        this.props.msgAlert({
           heading: 'Warning: ' + error.message,
           message: 'Update Failed',
           variant: 'danger'
@@ -119,7 +133,7 @@ class Pics extends Component {
   }
 
   render () {
-    const user = this.props.user
+    // const user = this.props.user
     const pics = this.state.pics.map(pic => (
       <div key={pic.id}>
         <Card style={{ width: '18rem' }}>
@@ -129,7 +143,7 @@ class Pics extends Component {
             <Card.Text>{pic.tag}</Card.Text>
             <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete}>Delete</Button>
             <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields}>Update</Button>
-            <Like props={user} name={pic.id}/>
+            {/* <Like props={user} name={pic.id}/> */}
           </Card.Body>
         </Card>
       </div>
@@ -168,8 +182,8 @@ class Pics extends Component {
 
     return (
       <div>
-        <CreatePic/>
-        {update()}
+        <CreatePic user={this.props.user} pics={this.state.pics} msgAlert={this.props.msgAlert}/>
+        {update}
         {pics}
       </div>
     )

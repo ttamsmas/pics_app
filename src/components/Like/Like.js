@@ -16,10 +16,10 @@ class Likes extends Component {
     console.log(this.props.props)
     const user = this.props.props
     indexLike(user)
-      .then(res => {
-        console.log(this.state)
-        this.setState({ likes: res.length })
-      })
+    // .then(res => {
+    //   console.log(this.state)
+    //   this.setState({ likes: res.length })
+    // })
   }
 
   handleToggle = event => {

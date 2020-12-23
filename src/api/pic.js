@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createPic = (pic, user) => {
+export const createPic = (user, pic) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/pics/',

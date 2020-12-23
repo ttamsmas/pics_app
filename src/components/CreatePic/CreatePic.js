@@ -1,7 +1,8 @@
 // import React/dev Tools
 import React, { Component } from 'react'
 import { Button, Form, Accordion, Card } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom'
+
+// import { Redirect } from 'react-router-dom'
 
 // import messaging for feedback
 import messages from '../AutoDismissAlert/messages'
@@ -17,7 +18,7 @@ class CreatePic extends Component {
       caption: '',
       tag: '',
       imgLink: '',
-      created: null
+      redirect: null
     }
   }
 
@@ -36,11 +37,9 @@ class CreatePic extends Component {
       })
     }
 
-    onCreatePic = event => {
+    onCreatePic = (event, props) => {
       event.preventDefault()
-      const { msgAlert, user } = this.props
-      console.log(this.state)
-
+      const { user, msgAlert } = this.props
       const { caption, tag, imgLink } = this.state
       const pic = {
         caption,
@@ -48,14 +47,21 @@ class CreatePic extends Component {
         imgLink
       }
       console.log(pic)
+      console.log(user)
+      console.log(event.target)
+      console.log(this.props.msgAlert)
+      console.log(this.props)
+      console.log(this.props)
+
       createPic(user, pic)
-        // Next make form clear on submit
+      // Next make form clear on submit
         .then(() => this.setState({
           caption: '',
           tag: '',
           imgLink: '',
-          created: '/'
-        }))
+          created: ''
+        })
+        )
 
         .then(() => msgAlert({
           heading: 'Sent!',
@@ -64,7 +70,6 @@ class CreatePic extends Component {
         }))
 
         .catch(error => {
-          this.setState({ pic: '' })
           msgAlert({
             heading: 'Message failed ' + error.message,
             message: messages.createMessageFailure,
@@ -74,11 +79,11 @@ class CreatePic extends Component {
     }
 
     render () {
-      if (this.state.created) {
-        return (
-          <Redirect to={this.state.redirect}/>
-        )
-      }
+      // if (this.state.created) {
+      //   return (
+      //     <Redirect to={this.state.redirect}/>
+      //   )
+      // }
       return (
         <div>
           <Accordion defaultActiveKey="0">
@@ -93,10 +98,10 @@ class CreatePic extends Component {
                   <form onSubmit={this.onCreatePic}>
                     <Form.Group>
                       <Form.Label>Pic Caption</Form.Label>
-                      <Form.Control type="text" placeholder="type caption here..." name='caption' onChange={this.handleInputChange}/>
+                      <Form.Control value={this.state.caption} type="text" placeholder="type caption here..." name='caption' onChange={this.handleInputChange}/>
                       <br />
                       <Form.Label>Pic Tags</Form.Label>
-                      <Form.Control as="select" name='tag' onChange={this.handleInputChange}>
+                      <Form.Control value={this.state.tag} as="select" name='tag' onChange={this.handleInputChange}>
                         <option>People</option>
                         <option>Pets</option>
                         <option>Nature</option>
@@ -105,7 +110,7 @@ class CreatePic extends Component {
                       </Form.Control>
                       <br />
                       <Form.Label>Pic Link</Form.Label>
-                      <Form.Control type="text" placeholder="Link to Pic" name='imgLink' onChange={this.handleInputChange}/>
+                      <Form.Control type="text" value={this.state.imgLink} placeholder="Link to Pic" name='imgLink' onChange={this.handleInputChange}/>
                       <br />
                       <Form.File id="fileUpload" placeholder="upload pic" name='file' onChange={this.handleInputChange}/>
                     </Form.Group>
