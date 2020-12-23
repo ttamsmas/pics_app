@@ -34,7 +34,7 @@ This React with Javascript based application allows users to share and like pict
 
 #### Landing Page (Unauthenticated Route)
 
-![Image of Unauthenticated Landing Page](blob:https://imgur.com/5de1b299-cbc4-444c-9208-0ed0d3416abb)
+![Image of Unauthenticated Landing Page](https://i.imgur.com/lBoiuRw.png)
 
 #### Primary Picture Gallery (Authenticated)
 
