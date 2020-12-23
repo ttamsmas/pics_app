@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { indexPic, picDelete, updatePic } from '../../api/pic'
 import { Button, Card, Form } from 'react-bootstrap'
 // import Like from '../Like/Like'
-import CreatePic from '../CreatePic/CreatePic'
 
 class Pics extends Component {
   constructor (props) {
@@ -182,7 +181,6 @@ class Pics extends Component {
 
     return (
       <div>
-        <CreatePic user={this.props.user} runIndex={this.runIndex} msgAlert={this.props.msgAlert}/>
         {update()}
         {pics}
       </div>

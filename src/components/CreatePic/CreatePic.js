@@ -1,6 +1,7 @@
 // import React/dev Tools
 import React, { Component } from 'react'
-import { Button, Form, Accordion, Card } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 // import { Redirect } from 'react-router-dom'
 
@@ -18,7 +19,7 @@ class CreatePic extends Component {
       caption: '',
       tag: '',
       imgLink: '',
-      redirect: null
+      created: null
     }
   }
 
@@ -59,10 +60,9 @@ class CreatePic extends Component {
           caption: '',
           tag: '',
           imgLink: '',
-          created: ''
+          created: '/'
         })
         )
-        .then(() => this.props.runIndex())
 
         .then(() => msgAlert({
           heading: 'Sent!',
@@ -80,47 +80,36 @@ class CreatePic extends Component {
     }
 
     render () {
-      // if (this.state.created) {
-      //   return (
-      //     <Redirect to={this.state.redirect}/>
-      //   )
-      // }
+      if (this.state.created) {
+        return (
+          <Redirect to={this.state.created}/>
+        )
+      }
+
       return (
         <div>
-          <Accordion defaultActiveKey="0">
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  Upload a Pic
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="1">
-                <Card.Body>
-                  <form onSubmit={this.onCreatePic}>
-                    <Form.Group>
-                      <Form.Label>Pic Caption</Form.Label>
-                      <Form.Control value={this.state.caption} type="text" placeholder="type caption here..." name='caption' onChange={this.handleInputChange}/>
-                      <br />
-                      <Form.Label>Pic Tags</Form.Label>
-                      <Form.Control value={this.state.tag} as="select" name='tag' onChange={this.handleInputChange}>
-                        <option>People</option>
-                        <option>Pets</option>
-                        <option>Nature</option>
-                        <option>Action</option>
-                        <option>Lifestyle</option>
-                      </Form.Control>
-                      <br />
-                      <Form.Label>Pic Link</Form.Label>
-                      <Form.Control type="text" value={this.state.imgLink} placeholder="Link to Pic" name='imgLink' onChange={this.handleInputChange}/>
-                      <br />
-                      <Form.File id="fileUpload" placeholder="upload pic" name='file' onChange={this.handleInputChange}/>
-                    </Form.Group>
-                    <Button as={Button} type='submit' variant="dark">Dark</Button>
-                  </form>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
+          <h1>Create New Pic</h1>
+          <form onSubmit={this.onCreatePic}>
+            <Form.Group>
+              <Form.Label>Pic Caption</Form.Label>
+              <Form.Control onChange={this.handleInputChange} value={this.state.caption} type="text" name='caption'/>
+              <br />
+              <Form.Label>Pic Tags</Form.Label>
+              <Form.Control as="select" onChange={this.handleInputChange} value={this.state.tag} name='tag'>
+                <option>People</option>
+                <option>Pets</option>
+                <option>Nature</option>
+                <option>Action</option>
+                <option>Lifestyle</option>
+              </Form.Control>
+              <br />
+              <Form.Label>Pic Link</Form.Label>
+              <Form.Control type="text" onChange={this.handleInputChange} value={this.state.imgLink} placeholder="Link to Pic" name='imgLink'/>
+              <br />
+              <Form.File id="fileUpload" placeholder="upload pic" name='file'/>
+            </Form.Group>
+            <Button type='submit' variant="dark">Dark</Button>
+          </form>
         </div>
       )
     }
