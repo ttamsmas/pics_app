@@ -13,11 +13,11 @@ class Likes extends Component {
   }
 
   componentDidMount () {
-    indexLike(this.props)
-    // .then(res => {
-    //   console.log(this.state)
-    //   this.setState({ likes: res.length })
-    // })
+    indexLike(this.props.user.token)
+      .then(res => {
+        console.log(this.state)
+        this.setState({ likes: res.length })
+      })
   }
 
   handleToggle = event => {

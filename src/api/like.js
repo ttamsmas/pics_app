@@ -17,12 +17,12 @@ export const createLike = (pic, user) => {
   })
 }
 
-export const indexLike = user => {
+export const indexLike = token => {
   return axios({
     method: 'GET',
     url: apiUrl + '/likes/',
     headers: {
-      'Authorization': `Token ${user.token}`
+      'Authorization': `Token ${token}`
     }
   })
 }
