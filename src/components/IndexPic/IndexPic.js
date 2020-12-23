@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import { indexPic, picDelete, updatePic } from '../../api/pic'
 import { Button, Card, Form, Container, CardGroup, Col, Row } from 'react-bootstrap'
-// import Like from '../Like/Like'
+
+import Like from '../Like/Like'
 
 class Pics extends Component {
   constructor (props) {
@@ -132,7 +133,6 @@ class Pics extends Component {
   }
 
   render () {
-    // const user = this.props.user
     const pics = this.state.pics.map(pic => (
       <Col fluid="true" md={4} xs={6} key={pic.id}>
         <Card>
@@ -142,7 +142,7 @@ class Pics extends Component {
             <Card.Text>{pic.tag}</Card.Text>
             <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete}>Delete</Button>
             <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields}>Update</Button>
-            {/* <Like props={user} name={pic.id}/> */}
+            <Like user={this.props.user} name={pic.id}/>
           </Card.Body>
         </Card>
       </Col>
@@ -185,7 +185,7 @@ class Pics extends Component {
           <Row xs={1}>
             {update()}
           </Row>
-          <CardGroup display="flex">
+          <CardGroup className="picture-box" display="flex">
             {pics}
           </CardGroup>
         </Container>

@@ -13,9 +13,7 @@ class Likes extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props.props)
-    const user = this.props.props
-    indexLike(user)
+    indexLike(this.props)
     // .then(res => {
     //   console.log(this.state)
     //   this.setState({ likes: res.length })
