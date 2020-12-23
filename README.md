@@ -12,11 +12,37 @@ This React with Javascript based application allows users to share and like pict
 ## Table of Contents
 
  - Important Links
+ - Instructions for Local Use
+ - Application Screenshots
  - Planning Story
  - User Stories
  - Technologies Used
  - Unsolved Problems
  - Entity Relationship Diagram
+
+---
+
+## Instructions for Local Use
+
+ 1. Fork & Clone this repository
+ 2. Checkout to a new branch & ``` git init ```
+ 3. Install Dependancies via ``` npm install ```
+
+---
+
+## Application Screenshots
+
+#### Landing Page (Unauthenticated Route)
+
+![Image of Unauthenticated Landing Page]()
+
+#### Primary Picture Gallery (Authenticated)
+
+![Image of Authenticated Primary Picture Gallery]()
+
+#### Rendering on a small screen (Authenticated)
+
+![Image of Small Screen Gallery]()
 
 ---
 

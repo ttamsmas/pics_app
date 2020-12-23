@@ -24,8 +24,8 @@ class SignIn extends Component {
   onSignIn = event => {
     event.preventDefault()
 
-    const { msgAlert, setUser } = this.props
-    console.log(this.state)
+    const { msgAlert, history, setUser } = this.props
+
     signIn(this.state)
       .then(res => setUser(res.data.user))
       .then(() => msgAlert({
@@ -33,6 +33,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
+      .then(() => history.push('/'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({

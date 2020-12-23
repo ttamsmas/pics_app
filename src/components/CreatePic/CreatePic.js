@@ -47,12 +47,6 @@ class CreatePic extends Component {
         tag,
         imgLink
       }
-      console.log(pic)
-      console.log(user)
-      console.log(event.target)
-      console.log(this.props.msgAlert)
-      console.log(this.props)
-      console.log(this.props)
 
       createPic(user, pic)
       // Next make form clear on submit
@@ -108,7 +102,7 @@ class CreatePic extends Component {
               <br />
               <Form.File id="fileUpload" placeholder="upload pic" name='file'/>
             </Form.Group>
-            <Button type='submit' variant="dark">Dark</Button>
+            <Button type='submit' variant="dark">Create</Button>
           </form>
         </div>
       )

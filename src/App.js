@@ -55,7 +55,13 @@ class App extends Component {
 
   render () {
     const { msgAlerts, user } = this.state
-
+    const logo = () => {
+      if (this.state.user === null) {
+        return (
+          <img className="logo" alternate="Camera Image" src="https://i.imgur.com/NZxpHxk.jpg"/>
+        )
+      }
+    }
     return (
       <Fragment>
         <Header user={user} />
@@ -90,6 +96,9 @@ class App extends Component {
           )} />
           <button onClick={this.directLogIn}>Quick Login</button>
         </main>
+        <div>
+          {logo()}
+        </div>
       </Fragment>
     )
   }
