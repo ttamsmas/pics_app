@@ -1,7 +1,7 @@
-[cat1](https://imgur.com/uPc1LIH)
+https://i.imgur.com/uPc1LIH.jpeg
 
-[cat2](https://imgur.com/yVU48Gk)
+https://i.imgur.com/yVU48Gk.jpeg
 
-[cat3](https://imgur.com/sqdxdQJ)
+https://i.imgur.com/sqdxdQJ.jpg
 
-https://imgur.com/qYeL8rT
+https://i.imgur.com/qYeL8rT.jpg
