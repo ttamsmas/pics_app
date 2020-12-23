@@ -152,7 +152,7 @@ class Pics extends Component {
       if (this.state.showUpdate) {
         return (
           <div>
-            <h1>Update Fields</h1>
+            <h1 onClick={this.showUpdateFields}>Update Fields</h1>
             <form onSubmit={this.onUpdatePic}>
               <Form.Group>
                 <Form.Label>Pic Caption</Form.Label>
