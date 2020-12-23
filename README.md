@@ -113,7 +113,10 @@ I developed Wireframes of standard and cellphone screens and set to work with th
 
 ## Wireframes
 
-[Landing Page for Sign In & Up](https://i.imgur.com/Kp5O9Zi.jpg)
-[Primary Photo Display Page](https://i.imgur.com/tFdiBhq.jpg)
-[Primary Page with Create/Upload Module Toggled](https://i.imgur.com/fnlNlCi.jpg)
-[Cell Phone View](https://i.imgur.com/jzdoyef.jpg)
+![Landing Page for Sign In & Up](https://i.imgur.com/Kp5O9Zi.jpg)
+
+![Primary Photo Display Page](https://i.imgur.com/tFdiBhq.jpg)
+
+![Primary Page with Create/Upload Module Toggled](https://i.imgur.com/fnlNlCi.jpg)
+
+![Cell Phone View](https://i.imgur.com/jzdoyef.jpg)
