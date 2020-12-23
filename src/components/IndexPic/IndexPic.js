@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { indexPic, picDelete, updatePic } from '../../api/pic'
-import { Button, Card, Form } from 'react-bootstrap'
+import { Button, Card, Form, Container, CardGroup, Col, Row } from 'react-bootstrap'
 // import Like from '../Like/Like'
 
 class Pics extends Component {
@@ -134,8 +134,8 @@ class Pics extends Component {
   render () {
     // const user = this.props.user
     const pics = this.state.pics.map(pic => (
-      <div key={pic.id}>
-        <Card style={{ width: '18rem' }}>
+      <Col fluid="true" md={4} xs={6} key={pic.id}>
+        <Card>
           <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme"/>
           <Card.Body>
             <Card.Title>{pic.caption}</Card.Title>
@@ -145,7 +145,7 @@ class Pics extends Component {
             {/* <Like props={user} name={pic.id}/> */}
           </Card.Body>
         </Card>
-      </div>
+      </Col>
     ))
 
     const update = props => {
@@ -181,8 +181,14 @@ class Pics extends Component {
 
     return (
       <div>
-        {update()}
-        {pics}
+        <Container fluid="true">
+          <Row xs={1}>
+            {update()}
+          </Row>
+          <CardGroup display="flex">
+            {pics}
+          </CardGroup>
+        </Container>
       </div>
     )
   }
