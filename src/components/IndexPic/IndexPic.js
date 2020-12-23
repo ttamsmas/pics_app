@@ -182,7 +182,7 @@ class Pics extends Component {
 
     return (
       <div>
-        <CreatePic user={this.props.user} pics={this.state.pics} msgAlert={this.props.msgAlert}/>
+        <CreatePic user={this.props.user} runIndex={this.runIndex} msgAlert={this.props.msgAlert}/>
         {update()}
         {pics}
       </div>

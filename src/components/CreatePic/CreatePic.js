@@ -62,6 +62,7 @@ class CreatePic extends Component {
           created: ''
         })
         )
+        .then(() => this.props.runIndex())
 
         .then(() => msgAlert({
           heading: 'Sent!',
