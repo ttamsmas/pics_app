@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { createLike, indexLike, likeDelete } from '../../api/like'
+import { indexLike, likeDelete, createLike } from '../../api/like'
 import { Form } from 'react-bootstrap'
 
 class Likes extends Component {
@@ -13,26 +13,26 @@ class Likes extends Component {
   }
 
   componentDidMount () {
+    console.log(this.props.user)
     indexLike(this.props.user.token)
-      .then(res => {
-        console.log(this.state)
-        this.setState({ likes: res.length })
-      })
+    // .then(res => {
+    //   this.setState({ likes: res.data.likes.length })
+    // })
   }
 
   handleToggle = event => {
-    const user = this.props.props
     event.preventDefault()
-    console.log(event.target)
     const picId = event.target.name
     const likeId = event.target.id
     console.log(likeId)
+    console.log(this.props.user.token)
+    console.log(picId)
     if (this.state.liked === true) {
       this.setState({ liked: false })
-      likeDelete(user, likeId)
+      likeDelete(this.props.user.token, likeId)
     } else {
       this.setState({ liked: true })
-      createLike(picId, user)
+      createLike(picId, this.props.user.token)
     }
   }
 
