@@ -18,7 +18,7 @@ import IndexPic from './components/IndexPic/IndexPic'
 import CreatePic from './components/CreatePic/CreatePic'
 
 // Import API Auth for directLogIn
-import { signIn } from './api/auth'
+// import { signIn } from './api/auth'
 
 class App extends Component {
   constructor () {
@@ -30,11 +30,11 @@ class App extends Component {
   }
 
   // updates user name to show Authenticated Route
-  directLogIn = event => {
-    event.preventDefault()
-    signIn({ email: 'w@w.com', password: '66666' })
-      .then(res => this.setUser(res.data.user))
-  }
+  // directLogIn = event => {
+  //   event.preventDefault()
+  //   signIn({ email: 'w@w.com', password: '66666' })
+  //     .then(res => this.setUser(res.data.user))
+  // }
 
   setUser = user => this.setState({ user })
 
@@ -94,7 +94,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create-pic' render={() => (
             <CreatePic msgAlert={this.msgAlert} user={user} />
           )} />
-          <button onClick={this.directLogIn}>Quick Login</button>
+          { /* <button onClick={this.directLogIn}>Quick Login</button> */ }
         </main>
         <div>
           {logo()}

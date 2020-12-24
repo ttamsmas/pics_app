@@ -26,10 +26,6 @@ class Likes extends Component {
         const secondId = picLikes.findIndex(element => element.owner.email === this.props.user.email && element.pic.id === this.props.name)
         // check the index response for any likes by the current user, if there is one set the checkbox of that pic to checked so when you click it you delete it not create it
         if (picLikes[secondId] !== undefined) {
-          console.log(likeArray)
-          console.log(picLikes)
-          console.log(picLikes[secondId])
-          console.log(picLikes[secondId].id)
           this.setState({
             liked: true,
             likeId: picLikes[secondId].id
@@ -43,17 +39,49 @@ class Likes extends Component {
   handleToggle = event => {
     event.preventDefault()
     const picId = event.target.name
-    const likeId = event.target.id
-    console.log(likeId)
-    console.log(this.props.user.token)
-    console.log(picId)
+
     // check if the 'liked' state to determine if the user already has a like attached to the pic, this prevents a user from creating more than 1 like per pic
     if (this.state.liked === true) {
       this.setState({ liked: false })
       likeDelete(this.props.user, this.state.likeId)
+        .then(() => {
+          const newCount = this.state.likes - 1
+          this.setState({ likeId: '', likes: newCount })
+          indexLike(this.props.user.token)
+
+          // set state to a count of items linked to this specific pic so it can be displayed as a like count
+            .then(res => {
+              const likeArray = res.data.likes
+              const picLikes = likeArray.filter(like => like.pic.id === this.props.name)
+              this.setState({ likes: picLikes.length })
+            })
+        })
     } else {
       this.setState({ liked: true })
       createLike(picId, this.props.user)
+        .then(() => {
+          const newCount = this.state.likes + 1
+          this.setState({ likes: newCount })
+          indexLike(this.props.user.token)
+
+            // set state to a count of items linked to this specific pic so it can be displayed as a like count
+            .then(res => {
+              const likeArray = res.data.likes
+              const picLikes = likeArray.filter(like => like.pic.id === this.props.name)
+              this.setState({ likes: picLikes.length })
+
+              // name the checkbox the ID of the like attached to this user so you are able to delete that specific like
+              const secondId = picLikes.findIndex(element => element.owner.email === this.props.user.email && element.pic.id === this.props.name)
+              // check the index response for any likes by the current user, if there is one set the checkbox of that pic to checked so when you click it you delete it not create it
+              if (picLikes[secondId] !== undefined) {
+                this.setState({
+                  liked: true,
+                  likeId: picLikes[secondId].id
+                })
+              }
+            })
+            .catch(console.error)
+        })
     }
   }
 

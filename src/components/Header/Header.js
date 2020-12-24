@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
+    <Nav.Link href="#/">Home</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
     <Button variant="info">
@@ -22,7 +23,6 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
   </Fragment>
 )
 

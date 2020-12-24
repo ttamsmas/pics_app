@@ -69,7 +69,7 @@ class Pics extends Component {
     if (this.state.showUpdate === false) {
       this.setState({ showUpdate: true, picId: event.target.name })
     } else {
-      this.setState({ showUpdate: false, picId: '' })
+      this.setState({ showUpdate: false, picId: '', caption: '', tag: '', imgLink: '' })
     }
   }
 
@@ -152,7 +152,7 @@ class Pics extends Component {
       if (this.state.showUpdate) {
         return (
           <div>
-            <h1 onClick={this.showUpdateFields}>Update Fields</h1>
+            <h1>Update Fields</h1>
             <form onSubmit={this.onUpdatePic}>
               <Form.Group>
                 <Form.Label>Pic Caption</Form.Label>
@@ -169,10 +169,9 @@ class Pics extends Component {
                 <br />
                 <Form.Label>Pic Link</Form.Label>
                 <Form.Control type="text" onChange={this.handleInputChange} value={this.state.imgLink} placeholder="Link to Pic" name='imgLink'/>
-                <br />
-                <Form.File id="fileUpload" placeholder="upload pic" name='file'/>
               </Form.Group>
-              <Button type='submit' variant="dark">Update</Button>
+              <Button onClick={this.showUpdateFields} type='submit' variant="dark">Cancel</Button>
+              <Button type='submit' variant="info">Update</Button>
             </form>
           </div>
         )

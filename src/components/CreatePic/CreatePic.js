@@ -99,8 +99,6 @@ class CreatePic extends Component {
               <br />
               <Form.Label>Pic Link</Form.Label>
               <Form.Control type="text" onChange={this.handleInputChange} value={this.state.imgLink} placeholder="Link to Pic" name='imgLink'/>
-              <br />
-              <Form.File id="fileUpload" placeholder="upload pic" name='file'/>
             </Form.Group>
             <Button type='submit' variant="dark">Create</Button>
           </form>
