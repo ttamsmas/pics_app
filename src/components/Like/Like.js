@@ -7,8 +7,9 @@ class Likes extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      liked: '',
-      likes: ''
+      liked: false,
+      likes: '',
+      likeId: ''
     }
   }
 
@@ -17,20 +18,25 @@ class Likes extends Component {
 
       // set state to a count of items linked to this specific pic so it can be displayed as a like count
       .then(res => {
-        this.setState({ likes: res.data.likes.length })
-      })
-      // check the index response for any likes by the current user, if there is one set the checkbox of that pic to checked so when you click it you delete it not create it
-      .then(res => {
-        if (res.findIndex(this.props.name)) {
-          // name the checkbox the ID of the like attached to this user so you are able to delete that specific like
-          const likeIndex = res.findIndex(this.props.name)
-          const likeId = res[likeIndex].name
+        const likeArray = res.data.likes
+        const picLikes = likeArray.filter(like => like.pic.id === this.props.name)
+        this.setState({ likes: picLikes.length })
+
+        // name the checkbox the ID of the like attached to this user so you are able to delete that specific like
+        const secondId = picLikes.findIndex(element => element.owner.email === this.props.user.email && element.pic.id === this.props.name)
+        // check the index response for any likes by the current user, if there is one set the checkbox of that pic to checked so when you click it you delete it not create it
+        if (picLikes[secondId] !== undefined) {
+          console.log(likeArray)
+          console.log(picLikes)
+          console.log(picLikes[secondId])
+          console.log(picLikes[secondId].id)
           this.setState({
-            liked: 'checked',
-            likeId: likeId
+            liked: true,
+            likeId: picLikes[secondId].id
           })
         }
       })
+      .catch(console.error)
   }
 
   // the checkbox used for like/unlike toggles between creating and deleting a like attached to that specific pic & current user
@@ -44,7 +50,7 @@ class Likes extends Component {
     // check if the 'liked' state to determine if the user already has a like attached to the pic, this prevents a user from creating more than 1 like per pic
     if (this.state.liked === true) {
       this.setState({ liked: false })
-      likeDelete(this.props.user.token, likeId)
+      likeDelete(this.props.user, this.state.likeId)
     } else {
       this.setState({ liked: true })
       createLike(picId, this.props.user)
@@ -55,7 +61,7 @@ class Likes extends Component {
     return (
       <div>
         <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" defaultChecked={this.state.liked} label="like?" name={this.props.name} onClick={this.handleToggle}/>
+          <input type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onClick={this.handleToggle}/>
           <p>{this.state.likes}</p>
         </Form.Group>
       </div>
