@@ -1,4 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+$primary-font: Helvetica;
+$logo-font: 'Sofia', cursive;
+$primary-color: #FFFFFF;
+$highlight-color-1: #E61F21;
+$highlight-color-2: #EFEFEF;
+$font-color: #000000;
+$font-red: #E61F21;
+
+* {
+  color: $font-color;
+  font-family: $primary-font;
+}
 
 .picture-box {
   align-items: stretch;
@@ -8,4 +22,21 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn, button {
+  border-radius: 20px;
+  padding: 5px;
+  border: transparent;
+}
+
+.navbarLogo {
+  font-family: $logo-font;
+  font-weight: bold;
+  border: 5px white double;
+  border-radius: 50%;
+}
+
+Card {
+  border-radius: 20px;
 }

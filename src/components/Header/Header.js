@@ -1,23 +1,30 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Button } from 'react-bootstrap'
+import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Button variant="info">
-      <Nav.Link href="#create-pic"> +Pic </Nav.Link>
+    <Form.Control className="navbarSeach" type="text" placeholder="Search" />
+    <Button type="Button" className="btn btn-light">
+      <Nav.Link className="text-dark" href="#create-pic"> +Pic </Nav.Link>
     </Button>
+
+    <DropdownButton variant="light" id="down-button-drop-down" drop="left">
+      <Dropdown.Item eventKey="1" href="#change-password">Change Password</Dropdown.Item>
+      <Dropdown.Item eventKey="2" href="#sign-out">Sign Out</Dropdown.Item>
+    </DropdownButton>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <Button type="Button" className="btn btn-light">
+      <Nav.Link className="text-dark" href="#sign-up">Sign Up</Nav.Link>
+    </Button>
+    <Button type="Button" className="btn btn-light">
+      <Nav.Link className="text-dark" href="#sign-in">Sign In</Nav.Link>
+    </Button>
   </Fragment>
 )
 
@@ -27,14 +34,14 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="dark" variant="dark" expand="md">
-    <Navbar.Brand href="#">
-      Pics
-    </Navbar.Brand>
+  <Navbar expand="sm">
+    <Button className="navbarLogo" variant="danger" href="#">
+      M
+    </Button>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Whats App {user.email}?</span>}
+      <Nav className="text-dark ml-auto">
+        { user && <Button variant="light" className="navbar-text text-dark mr-2">{user.email}</Button>}
         { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>
