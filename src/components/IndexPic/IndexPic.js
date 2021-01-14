@@ -11,6 +11,7 @@ class Pics extends Component {
     this.state = {
       pics: [],
       showUpdate: false,
+      toggleOptions: false,
       picId: '',
       caption: '',
       tag: '',
@@ -41,6 +42,12 @@ class Pics extends Component {
         })
     }
     runIndex(user)
+  }
+
+  toggleOptions = () => {
+    this.setState({
+      toggleOptions: !this.state.toggleOptions
+    })
   }
 
   runIndex = () => {
@@ -135,13 +142,13 @@ class Pics extends Component {
   render () {
     const pics = this.state.pics.map(pic => (
       <Card fluid key={pic.id}>
-        <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme"/>
+        <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseOff={this.toggleOptions} />
         <Card.Body>
           <Card.Title>{pic.caption}</Card.Title>
           <Card.Text>{pic.tag}</Card.Text>
-          <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete}>Delete</Button>
-          <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields}>Update</Button>
-          <Like user={this.props.user} name={pic.id}/>
+          <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`} >Delete</Button>
+          <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`}>Update</Button>
+          <Like user={this.props.user} name={pic.id} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`}/>
         </Card.Body>
       </Card>
 
