@@ -146,9 +146,9 @@ class Pics extends Component {
         <Card.Body>
           <Card.Title>{pic.caption}</Card.Title>
           <Card.Text>{pic.tag}</Card.Text>
-          <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`} >Delete</Button>
-          <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`}>Update</Button>
-          <Like user={this.props.user} name={pic.id} className={`container${this.state.toggleOptions ? 'showOptions' : ''}`}/>
+          <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} className={`container${this.state.toggleOptions ? ' showOptions' : ''}`} >Delete</Button>
+          <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} className={`container${this.state.toggleOptions ? ' showOptions' : ''}`}>Update</Button>
+          <Like user={this.props.user} name={pic.id} className={`container${this.state.toggleOptions ? ' showOptions' : ''}`}/>
         </Card.Body>
       </Card>
 
