@@ -141,8 +141,8 @@ class Pics extends Component {
 
   render () {
     const pics = this.state.pics.map(pic => (
-      <Card fluid key={pic.id}>
-        <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseOff={this.toggleOptions} />
+      <Card fluid='true' key={pic.id}>
+        <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseOut={this.toggleOptions} />
         <Card.Body>
           <Card.Title>{pic.caption}</Card.Title>
           <Card.Text>{pic.tag}</Card.Text>
@@ -188,7 +188,7 @@ class Pics extends Component {
 
     return (
       <div>
-        <Container fluid>
+        <Container fluid='true'>
           <Row xs={1}>
             {update()}
           </Row>
