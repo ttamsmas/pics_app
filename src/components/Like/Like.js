@@ -89,7 +89,7 @@ class Likes extends Component {
     return (
       <div>
         <Form.Group controlId="formBasicCheckbox">
-          <input type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onClick={this.handleToggle}/>
+          <input type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onChange={this.handleToggle}/>
           <p>{this.state.likes}</p>
         </Form.Group>
       </div>
