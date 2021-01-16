@@ -44,10 +44,11 @@ class Pics extends Component {
     runIndex(user)
   }
 
-  toggleOptions = () => {
+  toggleOptions = event => {
     this.setState({
-      toggleOptions: !this.state.toggleOptions
+      toggleOptions: event.target.name
     })
+    console.log(this.state)
   }
 
   runIndex = () => {
@@ -140,21 +141,28 @@ class Pics extends Component {
   }
 
   render () {
-    const pics = this.state.pics.map(pic => (
-      <Card fluid='true' key={pic.id}>
-        <Card.Img variant="top" src={pic.imgLink} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseOut={this.toggleOptions} />
-        <Card.Body>
-          <Card.Title>{pic.caption}</Card.Title>
-          <Card.Text>{pic.tag}</Card.Text>
-          <div className={`container${this.state.toggleOptions ? ' showOptions' : ''}`} >
-            <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
-            <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
-            <Like user={this.props.user} name={pic.id} />
-          </div>
-        </Card.Body>
-      </Card>
-
-    ))
+    const pics = this.state.pics.map(pic => {
+      if (pic.id === this.state.toggleOptions) {
+        return (
+          <Card fluid='true' key={pic.id}>
+            <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+            <Card.Body>
+              <Card.Title>{pic.caption}</Card.Title>
+              <Card.Text>{pic.tag}</Card.Text>
+              <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
+              <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
+              <Like user={this.props.user} name={pic.id} />
+            </Card.Body>
+          </Card>
+        )
+      } else {
+        return (
+          <Card fluid='true' key={pic.id}>
+            <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+          </Card>
+        )
+      }
+    })
 
     const update = props => {
       if (this.state.showUpdate) {
