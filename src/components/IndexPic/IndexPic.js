@@ -159,6 +159,7 @@ class Pics extends Component {
         return (
           <Card fluid='true' key={pic.id}>
             <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+            <h3>{pic.id}</h3>
           </Card>
         )
       }
