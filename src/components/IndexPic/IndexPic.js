@@ -142,28 +142,21 @@ class Pics extends Component {
 
   render () {
     const pics = this.state.pics.map(pic => {
-      if (pic.id === this.state.toggleOptions) {
-        return (
-          <Card fluid='true' key={pic.id}>
-            <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+      return (
+        <Card fluid='true' key={pic.id}>
+          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+          {pic.id.toString() === this.state.toggleOptions &&
             <Card.Body>
               <Card.Title>{pic.caption}</Card.Title>
               <Card.Text>{pic.tag}</Card.Text>
               <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
               <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
               <Like user={this.props.user} name={pic.id} />
-            </Card.Body>
-          </Card>
-        )
-      } else {
-        return (
-          <Card fluid='true' key={pic.id}>
-            <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
-            <h3>{pic.id}</h3>
-          </Card>
-        )
-      }
-    })
+            </Card.Body>}
+        </Card>
+      )
+    }
+    )
 
     const update = props => {
       if (this.state.showUpdate) {
