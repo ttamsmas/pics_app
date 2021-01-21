@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Button, Dropdown, DropdownButton } from 'react-bootstrap'
+import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
+    <Form.Control className="navbarSeach" type="text" placeholder="Search" />
     <Button type="Button" className="btn btn-light">
       <Nav.Link className="text-dark" href="#create-pic"> +Pic </Nav.Link>
     </Button>
 
-    <DropdownButton variant="light" id="down-button-drop-down" drop="left">
+    <DropdownButton title="drop_button" variant="light" id="down-button-drop-down" drop="left">
       <Dropdown.Item eventKey="1" href="#change-password">Change Password</Dropdown.Item>
       <Dropdown.Item eventKey="2" href="#sign-out">Sign Out</Dropdown.Item>
     </DropdownButton>
