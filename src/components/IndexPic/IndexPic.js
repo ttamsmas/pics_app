@@ -48,7 +48,12 @@ class Pics extends Component {
     this.setState({
       toggleOptions: event.target.name
     })
-    console.log(this.state)
+  }
+
+  clearToggleOptions = event => {
+    this.setState({
+      toggleOptions: false
+    })
   }
 
   runIndex = () => {
@@ -144,7 +149,7 @@ class Pics extends Component {
     const pics = this.state.pics.map(pic => {
       return (
         <Card fluid='true' key={pic.id}>
-          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} />
+          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseLeave={this.clearToggleOptions}/>
           {pic.id.toString() === this.state.toggleOptions &&
             <Card.Body>
               <Card.Title>{pic.caption}</Card.Title>
@@ -152,7 +157,8 @@ class Pics extends Component {
               <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
               <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
               <Like user={this.props.user} name={pic.id} />
-            </Card.Body>}
+            </Card.Body>
+          }
         </Card>
       )
     }
