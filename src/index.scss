@@ -52,9 +52,11 @@ Card {
   opacity: 80%;
   border-radius: 20%;
   padding: 18px;
+  margin: 5px;
   display: flex;
   align-content: space-around;
   flex-flow: nowrap column;
+  cursor: crosshair;
 }
 
 .like_row {
@@ -62,5 +64,4 @@ Card {
   flex-flow: row nowrap;
   padding: 5px;
   align-content: baseline;
-  max-height: 10px;
 }
