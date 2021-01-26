@@ -51,22 +51,16 @@ Card {
   background-color: $highlight-color-2;
   opacity: 80%;
   border-radius: 20%;
-  padding: 15px;
+  padding: 18px;
   display: flex;
   align-content: space-around;
   flex-flow: nowrap column;
 }
 
-.pic_like {
-  display: flex;
-  flex-flow: nowrap row;
-  align-items: baseline;
-  justify-content: flex-start;
-  padding: 3px;
-}
-
 .like_row {
-  flex-flow: space-between;
-  padding: 25px;
-  align-items: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+  align-content: baseline;
+  max-height: 10px;
 }

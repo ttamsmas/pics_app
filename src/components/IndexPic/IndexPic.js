@@ -161,7 +161,7 @@ class Pics extends Component {
           <Card fluid='true' xs={12} onMouseLeave={this.clearToggleOptions}>
             <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
             {pic.id.toString() === this.state.toggleOptions &&
-              <Container fluid className="pic_card">
+              <Container fluid="xs" className="pic_card">
                 <row xs={12}>
                   <Card.Title>{pic.caption}</Card.Title>
                 </row>

@@ -98,11 +98,11 @@ class Likes extends Component {
   render () {
     return (
       <Form.Group controlId="formBasicCheckbox">
-        <Container fluid className="pic_like">
+        <Container fluid>
           <Row>
             <h6 className="like_row" xs={3}>Pin?</h6>
             <input className="like_row" type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onChange={this.handleToggle}/>
-            <h6 className="like_row" xs={6}>Total Pins: {this.state.likes}</h6>
+            <h6 className="like_row" xs={true}>Total Pins: {this.state.likes}</h6>
           </Row>
         </Container>
       </Form.Group>
