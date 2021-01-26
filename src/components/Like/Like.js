@@ -104,7 +104,7 @@ class Likes extends Component {
               <h6>Pin?</h6>
               <input type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onChange={this.handleToggle}/>
             </div>
-            <h6 xs={true}>Total Pins: {this.state.likes}</h6>
+            <h6 xs="true">Total Pins: {this.state.likes}</h6>
           </Row>
         </Container>
       </Form.Group>
