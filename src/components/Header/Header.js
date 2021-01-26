@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
+import { Button, Dropdown, DropdownButton } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <Form.Control className="navbarSeach" type="text" placeholder="Search" />
+    { /* <Form.Control className="navbarSeach" type="text" placeholder="Search" /> */ }
     <Button type="Button" className="btn btn-light">
       <Nav.Link className="text-dark" href="#create-pic"> +Pic </Nav.Link>
     </Button>
