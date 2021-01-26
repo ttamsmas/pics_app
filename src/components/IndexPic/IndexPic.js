@@ -157,9 +157,10 @@ class Pics extends Component {
   render () {
     const pics = this.state.pics.map(pic => {
       return (
-        <Card fluid='true' key={pic.id} onMouseLeave={this.clearToggleOptions}>
-          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
-          {pic.id.toString() === this.state.toggleOptions &&
+        <Container key={pic.id}>
+          <Card fluid='true' xs={12} onMouseLeave={this.clearToggleOptions}>
+            <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
+            {pic.id.toString() === this.state.toggleOptions &&
               <Container fluid className="pic_card">
                 <row xs={12}>
                   <Card.Title>{pic.caption}</Card.Title>
@@ -173,8 +174,9 @@ class Pics extends Component {
                   <Button xs={6} variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
                 </row>
               </Container>
-          }
-        </Card>
+            }
+          </Card>
+        </Container>
       )
     }
     )

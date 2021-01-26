@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { indexLike, likeDelete, createLike } from '../../api/like'
-import { Form, Container } from 'react-bootstrap'
+import { Form, Container, Row } from 'react-bootstrap'
 
 class Likes extends Component {
   _isMounted = false
@@ -98,9 +98,12 @@ class Likes extends Component {
   render () {
     return (
       <Form.Group controlId="formBasicCheckbox">
-        <Container className="pic_like">
-          <input type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onChange={this.handleToggle}/>
-          <p>  Total Pins: {this.state.likes}</p>
+        <Container fluid className="pic_like">
+          <Row>
+            <h6 className="like_row" xs={3}>Pin?</h6>
+            <input className="like_row" type="checkbox" checked={this.state.liked} label="like?" name={this.props.name} onChange={this.handleToggle}/>
+            <h6 className="like_row" xs={6}>Total Pins: {this.state.likes}</h6>
+          </Row>
         </Container>
       </Form.Group>
     )

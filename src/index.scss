@@ -53,14 +53,20 @@ Card {
   border-radius: 20%;
   padding: 15px;
   display: flex;
-  align-content: space-between;
-  flex-flow: wrap column;
+  align-content: space-around;
+  flex-flow: nowrap column;
 }
 
 .pic_like {
   display: flex;
   flex-flow: nowrap row;
   align-items: baseline;
-  align-content: space-between;
+  justify-content: flex-start;
   padding: 3px;
+}
+
+.like_row {
+  flex-flow: space-between;
+  padding: 25px;
+  align-items: flex-start;
 }
