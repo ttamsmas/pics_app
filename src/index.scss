@@ -46,8 +46,8 @@ $font-red: #E61F21;
   position: absolute;
   bottom: 0;
   background-color: $highlight-color-2;
-  opacity: 80%;
-  border-radius: 20%;
+  opacity: 75%;
+  border-radius: 5%;
   padding: 18px;
   margin: 5px;
   display: flex;
@@ -56,9 +56,10 @@ $font-red: #E61F21;
   cursor: crosshair;
 }
 
-.like_row {
+.like_row, .like_checkbox {
   display: flex;
   flex-flow: row nowrap;
   padding: 5px;
   align-content: baseline;
+  justify-content: space-evenly;
 }
