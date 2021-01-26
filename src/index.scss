@@ -44,3 +44,15 @@ Card {
 .showOptions {
   display: none;
 }
+
+.pic_card {
+  position: absolute;
+  bottom: 0;
+  background-color: $highlight-color-2;
+  opacity: 80%;
+  border-radius: 20%;
+  padding: 12px;
+  display: flex;
+  align-content: space-between;
+  flex-flow: wrap column;
+}

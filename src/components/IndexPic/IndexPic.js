@@ -160,13 +160,19 @@ class Pics extends Component {
         <Card fluid='true' key={pic.id} onMouseLeave={this.clearToggleOptions}>
           <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
           {pic.id.toString() === this.state.toggleOptions &&
-            <Card.Body>
-              <Card.Title>{pic.caption}</Card.Title>
-              <Card.Text>{pic.tag}</Card.Text>
-              <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
-              <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
-              <Like user={this.props.user} name={pic.id} />
-            </Card.Body>
+              <Container fluid className="pic_card">
+                <row xs={12}>
+                  <Card.Title>{pic.caption}</Card.Title>
+                </row>
+                <row xs={6}>
+                  <Card.Text xs={6}>#{pic.tag}</Card.Text>
+                  <Like xs={4} user={this.props.user} name={pic.id} />
+                </row>
+                <row xs={6}>
+                  <Button xs={6} variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
+                  <Button xs={6} variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
+                </row>
+              </Container>
           }
         </Card>
       )
