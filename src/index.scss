@@ -56,3 +56,8 @@ Card {
   align-content: space-between;
   flex-flow: wrap column;
 }
+
+.pic_like {
+  display: flex;
+  flex-flow: nowrap row;
+}
