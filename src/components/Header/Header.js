@@ -10,7 +10,7 @@ const authenticatedOptions = (
       <Nav.Link className="text-dark" href="#create-pic"> +Pic </Nav.Link>
     </Button>
 
-    <DropdownButton title="drop_button" variant="light" id="down-button-drop-down" drop="left">
+    <DropdownButton title="..." variant="light" id="down-button-drop-down" drop="left">
       <Dropdown.Item eventKey="1" href="#change-password">Change Password</Dropdown.Item>
       <Dropdown.Item eventKey="2" href="#sign-out">Sign Out</Dropdown.Item>
     </DropdownButton>
