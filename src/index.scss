@@ -51,7 +51,7 @@ Card {
   background-color: $highlight-color-2;
   opacity: 80%;
   border-radius: 20%;
-  padding: 12px;
+  padding: 15px;
   display: flex;
   align-content: space-between;
   flex-flow: wrap column;
@@ -60,4 +60,7 @@ Card {
 .pic_like {
   display: flex;
   flex-flow: nowrap row;
+  align-items: baseline;
+  align-content: space-between;
+  padding: 3px;
 }
