@@ -14,10 +14,6 @@ $font-red: #E61F21;
   font-family: $primary-font;
 }
 
-.picture-box {
-  align-items: stretch;
-}
-
 .logo {
     display: block;
     margin-left: auto;
@@ -37,8 +33,9 @@ $font-red: #E61F21;
   border-radius: 50%;
 }
 
-Card {
+.card-img-top, .card, .container {
   border-radius: 20px;
+  border: transparent;
 }
 
 .showOptions {
