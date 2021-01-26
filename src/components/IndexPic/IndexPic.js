@@ -6,6 +6,8 @@ import { Button, Card, Form, Container, Row, CardColumns } from 'react-bootstrap
 import Like from '../Like/Like'
 
 class Pics extends Component {
+  _isMounted = false
+
   constructor (props) {
     super(props)
     this.state = {
@@ -20,28 +22,31 @@ class Pics extends Component {
   }
 
   componentDidMount () {
-    const { user, msgAlert } = this.props
-    const runIndex = user => {
-      indexPic(user)
-        .then(res => {
-          this.setState({ pics: res.data.pics })
-        })
-        .then(() => {
-          msgAlert({
-            heading: 'Images Have Finished Loading',
-            variant: 'success',
-            message: 'enjoy!'
+    this._isMounted = true
+    if (this._isMounted) {
+      const { user, msgAlert } = this.props
+      const runIndex = user => {
+        indexPic(user)
+          .then(res => {
+            this.setState({ pics: res.data.pics })
           })
-        })
-        .catch(err => {
-          msgAlert({
-            heading: 'Pics Failed to Load',
-            variant: 'danger',
-            message: 'Pic Error Message: ' + err.message
+          .then(() => {
+            msgAlert({
+              heading: 'Images Have Finished Loading',
+              variant: 'success',
+              message: 'enjoy!'
+            })
           })
-        })
+          .catch(err => {
+            msgAlert({
+              heading: 'Pics Failed to Load',
+              variant: 'danger',
+              message: 'Pic Error Message: ' + err.message
+            })
+          })
+      }
+      runIndex(user)
     }
-    runIndex(user)
   }
 
   toggleOptions = event => {
@@ -145,11 +150,15 @@ class Pics extends Component {
       })
   }
 
+  componentWillUnmount () {
+    this._isMounted = false
+  }
+
   render () {
     const pics = this.state.pics.map(pic => {
       return (
-        <Card fluid='true' key={pic.id}>
-          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions} onMouseLeave={this.clearToggleOptions}/>
+        <Card fluid='true' key={pic.id} onMouseLeave={this.clearToggleOptions}>
+          <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
           {pic.id.toString() === this.state.toggleOptions &&
             <Card.Body>
               <Card.Title>{pic.caption}</Card.Title>
