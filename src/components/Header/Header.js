@@ -17,6 +17,14 @@ const authenticatedOptions = (
   </Fragment>
 )
 
+const authenticatedViews = (
+  <Fragment>
+    <Button type="Button" className="btn btn-light">
+      <Nav.Link className="text-dark" href="#pins">Sign In</Nav.Link>
+    </Button>
+  </Fragment>
+)
+
 const unauthenticatedOptions = (
   <Fragment>
     <Button type="Button" className="btn btn-light">
@@ -38,6 +46,9 @@ const Header = ({ user }) => (
     <Button className="navbarLogo" variant="danger" href="#">
       M
     </Button>
+    <Nav className="text-dark ml-auto">
+      { user ? authenticatedViews : ''}
+    </Nav>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="text-dark ml-auto">

@@ -54,3 +54,13 @@ export const updatePic = (user, data, picId) => {
     }
   })
 }
+
+export const pinView = user => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/pins/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
