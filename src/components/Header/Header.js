@@ -20,7 +20,10 @@ const authenticatedOptions = (
 const authenticatedViews = (
   <Fragment>
     <Button type="Button" className="btn btn-light">
-      <Nav.Link className="text-dark" href="#pins">Sign In</Nav.Link>
+      <Nav.Link className="text-dark" href="#/">All</Nav.Link>
+    </Button>
+    <Button type="Button" className="btn btn-light">
+      <Nav.Link className="text-dark" href="#pins">Pins</Nav.Link>
     </Button>
   </Fragment>
 )

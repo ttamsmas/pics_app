@@ -16,6 +16,7 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 // Pic Resource Components
 import IndexPic from './components/IndexPic/IndexPic'
 import CreatePic from './components/CreatePic/CreatePic'
+import PinView from './components/PinView/PinView'
 
 // Import API Auth for directLogIn
 import { signIn } from './api/auth'
@@ -90,6 +91,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/' render={() => (
             <IndexPic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/pins' render={() => (
+            <PinView msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/create-pic' render={() => (
             <CreatePic msgAlert={this.msgAlert} user={user} />
