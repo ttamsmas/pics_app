@@ -160,12 +160,10 @@ class Pics extends Component {
         <Container key={pic.id}>
           <Card onMouseLeave={this.clearToggleOptions}>
             <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
+            <Card.Title >{pic.caption}</Card.Title>
             {pic.id.toString() === this.state.toggleOptions &&
               <Container xs={10} fluid className="pic_card">
                 <Col xs={10}>
-                  <Row xs={1}>
-                    <Card.Title >{pic.caption}</Card.Title>
-                  </Row>
                   <Row xs={1}>
                     <Card.Text >Tags# {pic.tag}</Card.Text>
                   </Row>
