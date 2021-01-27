@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { indexPic, picDelete, updatePic } from '../../api/pic'
-import { Button, Card, Form, Container, Row, CardColumns } from 'react-bootstrap'
+import { Button, Card, Form, Container, Row, Col, CardColumns } from 'react-bootstrap'
 
 import Like from '../Like/Like'
 
@@ -158,21 +158,25 @@ class Pics extends Component {
     const pics = this.state.pics.map(pic => {
       return (
         <Container key={pic.id}>
-          <Card fluid='true' xs={12} onMouseLeave={this.clearToggleOptions}>
+          <Card onMouseLeave={this.clearToggleOptions}>
             <Card.Img variant="top" src={pic.imgLink} name={pic.id} alt="Cat Meme" onMouseOver={this.toggleOptions}/>
             {pic.id.toString() === this.state.toggleOptions &&
-              <Container fluid="xs" className="pic_card">
-                <Row xs={12}>
-                  <Card.Title>{pic.caption}</Card.Title>
-                </Row>
-                <Row xs={6}>
-                  <Card.Text xs={6}>#{pic.tag}</Card.Text>
-                  <Like xs={4} user={this.props.user} name={pic.id} />
-                </Row>
-                <Row xs={6}>
-                  <Button xs={6} variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
-                  <Button xs={6} variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
-                </Row>
+              <Container xs={10} fluid className="pic_card">
+                <Col xs={10}>
+                  <Row xs={1}>
+                    <Card.Title >{pic.caption}</Card.Title>
+                  </Row>
+                  <Row xs={1}>
+                    <Card.Text >Tags# {pic.tag}</Card.Text>
+                  </Row>
+                  <Row xs={1.65}>
+                    <Like user={this.props.user} name={pic.id} />
+                  </Row>
+                  <Row xs={2}>
+                    <Button variant="dark" size="sm" name={pic.id} onClick={this.onPicDelete} >Delete</Button>
+                    <Button variant="info" size="sm" name={pic.id} onClick={this.showUpdateFields} >Update</Button>
+                  </Row>
+                </Col>
               </Container>
             }
           </Card>
